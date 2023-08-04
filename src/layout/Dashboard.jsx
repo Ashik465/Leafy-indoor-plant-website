@@ -1,10 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { AiOutlineHome, AiOutlineSound, AiOutlinePieChart } from "react-icons/ai";
-import { BiDiamond, BiStats, BiBell } from "react-icons/bi";
-import { HiOutlineClipboardList, HiOutlineMail } from "react-icons/hi";
-import { IoMdBusiness } from "react-icons/io";
-import { BsBoundingBox } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
+import { AiOutlineHome,  AiOutlineAlignLeft, AiOutlineBars } from "react-icons/ai";
+import {  BiLogOut } from "react-icons/bi";
+import { VscAccount } from "react-icons/vsc";
 import DashNav from "../Pages/Dashboard/dashnav/DashNav";
 
 const Dashboard = () => {
@@ -24,14 +21,23 @@ const Dashboard = () => {
                     </div>
                     <Outlet></Outlet>
                 </div>
-                <div className="drawer-side md:border-r">
+                <div className="drawer-side  ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay bg-black"></label>
-                    <ul className="menu flex-nowrap my-6 px-4 w-52 h-full space-y-2 text-base-content">
+                    <ul className="menu flex-nowrap py-6 px-4 w-52 h-full space-y-2 text-base-content bg-gradient-to-bl from-blue-500 to-purple-600">
                         {/* ******************************************************************************************
                                                          Sidebar content here 
                         *********************************************************************************************/}
-                        <h2 className="text-xl font-bold mb-4">Clean<span className="text-blue-700">Board</span></h2>
-                        <p className="px-3 py-2 text-xs">Admin Panel</p>
+                      
+
+                        <div className="flex gap-5  items-center justify-center">
+      <div className="w-6 h-6  -rotate-45 bg-white rounded" />
+  <div className="text-white text-2xl font-bold leading-loose">Job Task</div>
+  <label htmlFor="my-drawer-2"><AiOutlineAlignLeft className="text-white"></AiOutlineAlignLeft></label>
+  
+  </div>
+
+                       
+                        
                         <li>
                             <NavLink
                                 to="/"
@@ -44,84 +50,27 @@ const Dashboard = () => {
                             <NavLink
                                 to="/listings"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <BiDiamond />
-                                Listings
+                                <AiOutlineBars></AiOutlineBars>
+                                Courses
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
                                 to="/orders"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <HiOutlineClipboardList />
-                                Orders & Delivery
+                                <VscAccount />
+                                Account
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
                                 to="/stats"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <BiStats />
-                                Stats
+                                <BiLogOut />
+                                Logout
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to="/finances"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <IoMdBusiness />
-                                Finances
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/marketing"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <AiOutlineSound />
-                                Marketing
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/integrations"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <BsBoundingBox />
-                                Integrations
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/reports"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <AiOutlinePieChart />
-                                Reports
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/settings"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <FiSettings />
-                                Settings
-                            </NavLink>
-                        </li>
-                        <hr />
-                        <p className="px-3 py-2 text-xs">Insights</p>
-                        <li>
-                            <NavLink
-                                to="/inbox"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <HiOutlineMail />
-                                Inbox
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/notifications"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <BiBell />
-                                Notifications
-                            </NavLink>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
