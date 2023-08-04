@@ -60,11 +60,11 @@ const SignUp = () => {
           {
             // eslint-disable-next-line react/jsx-no-undef
             formArray.map((v, i) => <React.Fragment key={i}>
-            <div  className={`w-[35px] my-3 text-white rounded-full ${formNo - 1 === i || formNo - 1 === i + 1 || formNo === formArray.length ? 'bg-blue-500' : 'bg-slate-400'} h-[35px] flex justify-center items-center`}>
+            <div  className={`w-[35px] my-3 text-white rounded-full ${formNo - 1 === i || formNo - 1 === i + 1 || formNo === formArray.length ? 'bg-indigo-500' : 'bg-slate-400'} h-[35px] flex justify-center items-center`}>
               {v}
             </div>
               {
-                i !== formArray.length - 1 && <div className={`w-[85px] h-[2px] ${formNo === i + 2 || formNo === formArray.length ? 'bg-blue-500' : 'bg-slate-400'}`}></div>
+                i !== formArray.length - 1 && <div className={`w-[85px] h-[2px] ${formNo === i + 2 || formNo === formArray.length ? 'bg-indigo-500' : 'bg-slate-400'}`}></div>
               }
             </React.Fragment>)
           }
@@ -115,38 +115,7 @@ const SignUp = () => {
                                 <option value='Holy Family Red Crescent Medical College'>Holy Family Red Crescent Medical College</option>
                             </select>
                         </div>
-                        {/* education level input field */}
-                        {/* <div className='flex flex-col mb-2'>
-                            <label htmlFor="educationLevel">Education Level</label>
-                            <select
-                                value={state.educationLevel}
-                                onChange={inputHandle}
-                                className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md'
-                                name='educationLevel'
-                            >
-                                <option value=''>Select Education Level</option>
-                                <option value='SSC'>Secondary School Certificate (SSC)</option>
-                                <option value='HSC'>Higher Secondary School Certificate (HSC)</option>
-                                <option value='Diploma'>Diploma</option>
-                                <option value='BSC'>Bachelor of Science (BSC)</option>
-                                <option value='MA'>Master of Arts (MA)</option>
-                                <option value='BA'>Bachelor of Arts (BA)</option>
-                            </select>
-                        </div> */}
-                        {/* work time input field */}
-                        {/* <div className='flex flex-col mb-2'>
-                            <label htmlFor="workTime">Work Time</label>
-                            <select
-                                value={state.workTime}
-                                onChange={inputHandle}
-                                className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md'
-                                name='workTime'
-                            >
-                                <option value=''>Select Work Time</option>
-                                <option value='Full Time'>Full Time</option>
-                                <option value='Part Time'>Part Time</option>
-                            </select>
-                        </div> */}
+                       
 
                         {/* Conditionally render Education Level or Work Time based on selected position */}
                         {isActiveStep(1) && state.position === 'teacher' && (
@@ -185,7 +154,7 @@ const SignUp = () => {
                         )}
 
             <div className='mt-4 flex justify-center items-center'>
-              <button onClick={next} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Next</button>
+              <button onClick={next} className='px-3 py-2 text-lg rounded-md w-full text-white bg-indigo-500'>Next</button>
             </div>
           </div>
         }
