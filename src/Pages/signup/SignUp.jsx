@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/picture/signuplogo.png'
+import { GiConfirmed } from "react-icons/gi";
+
 
 const SignUp = () => {
 
@@ -56,6 +58,7 @@ const SignUp = () => {
     }
 
     const isActiveStep = (step) => formNo === step || formNo === step + 1;
+    const info = ['Information','Security','Confirmation']
     return (
         <>
             <div className="w-screen h-screen bg-white flex justify-center items-center">
@@ -66,10 +69,13 @@ const SignUp = () => {
             // eslint-disable-next-line react/jsx-no-undef
             formArray.map((v, i) => <React.Fragment key={i}>
             <div  className={`w-[35px] my-3 text-white rounded-full ${formNo - 1 === i || formNo - 1 === i + 1 || formNo === formArray.length ? 'bg-indigo-500' : 'bg-slate-400'} h-[35px] flex justify-center items-center`}>
-              {v}
+              { formNo - 1 === i + 1 || formNo === formArray.length ? <GiConfirmed ></GiConfirmed> : v}
             </div>
               {
                 i !== formArray.length - 1 && <div className={`w-[85px] h-[2px] ${formNo === i + 2 || formNo === formArray.length ? 'bg-indigo-500' : 'bg-slate-400'}`}></div>
+              }
+              {
+                 <div className={`w-[85px] h-[2px] hidden md:block ${formNo === i + 2 || formNo === formArray.length ? 'bg-indigo-500' : 'bg-slate-400'} ${formNo === i + 2 || formNo === formArray.length ? 'text-indigo-500' : 'text-slate-400'}`}  >{info[i]}</div>
               }
             </React.Fragment>)
           }
