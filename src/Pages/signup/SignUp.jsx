@@ -15,9 +15,9 @@ const SignUp = () => {
       institute: '',
       educationLevel: '',
       workTime: '',
-      varsity: '',
-      session: '',
-      address: '',
+      password: '',
+      ConfirmPassword: '',
+      
       district: '',
       thana: '',
       post: ''
@@ -32,9 +32,15 @@ const SignUp = () => {
       if (formNo === 1 && state.name && state.email && state.position && state.institute) {
         setFormNo(formNo + 1)
       }
-      else if (formNo === 2 && state.varsity && state.session && state.address) {
-        setFormNo(formNo + 1)
-      } else {
+      else if (formNo === 2 && state.password && state.ConfirmPassword ) {
+        // setFormNo(formNo + 1)
+         if (formNo === 2 && state.password == state.ConfirmPassword ) {
+            setFormNo(formNo + 1)
+          }  else {
+            toast.error('new password and confirm password did not match')
+          }
+      }
+       else {
         toast.error('Please fillup all input field')
       }
     }
@@ -161,19 +167,16 @@ const SignUp = () => {
 
         {
           formNo === 2 && <div>
+                  <h1 className="p-2 text-center text-zinc-800 text-3xl font-semibold leading-10">Security</h1>
             <div className='flex flex-col mb-2'>
-              <label className='text-slate-500' htmlFor="varsity">Varsity</label>
-              <input value={state.varsity} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="text" name='varsity' placeholder='varsity name' id='varsity' />
+              <label className='text-slate-500' htmlFor="password">New password</label>
+              <input value={state.password} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="password" name='password' placeholder='Enter New Password' id='password' />
             </div>
             <div className='flex flex-col mb-2'>
-              <label className='text-slate-500' htmlFor="session">session</label>
-              <input value={state.session} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="text" name='session' placeholder='session' id='session' />
+              <label className='text-slate-500' htmlFor="ConfirmPassword">Confirm Password</label>
+              <input value={state.ConfirmPassword} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="password" name='ConfirmPassword' placeholder='Retype-New-password' id='ConfirmPassword' />
             </div>
-            <div className='flex flex-col mb-2'>
-              <label className='text-slate-500' htmlFor="address">Address</label>
-              
-              <textarea value={state.address} onChange={inputHandle}  className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="number" name='address' placeholder='address' ></textarea>
-            </div>
+           
             <div className='mt-4 gap-3 flex justify-center items-center'>
               <button onClick={pre} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Previous</button>
               <button onClick={next} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Next</button>
