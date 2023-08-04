@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+
+import  { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,8 +10,8 @@ const SignUp = () => {
     const [formNo, setFormNo] = useState(formArray[0])
     const [state, setState] = useState({
       name: '',
-      dept: '',
-      batch: '',
+      email: '',
+      position: '',
       varsity: '',
       session: '',
       address: '',
@@ -24,7 +26,7 @@ const SignUp = () => {
       })
     }
     const next = () => {
-      if (formNo === 1 && state.name && state.dept && state.batch) {
+      if (formNo === 1 && state.name && state.email && state.position) {
         setFormNo(formNo + 1)
       }
       else if (formNo === 2 && state.varsity && state.session && state.address) {
@@ -47,9 +49,9 @@ const SignUp = () => {
 
     return (
         <>
-            <div className="w-screen h-screen bg-slate-300 flex justify-center items-center">
+            <div className="w-screen h-screen bg-white flex justify-center items-center">
       <ToastContainer />
-      <div className="card w-[370px] rounded-md shadow-md bg-white p-5">
+      <div className="card w-[570px]   bg-white p-5">
         <div className='flex justify-center items-center'>
           {
             formArray.map((v, i) => <><div className={`w-[35px] my-3 text-white rounded-full ${formNo - 1 === i || formNo - 1 === i + 1 || formNo === formArray.length ? 'bg-blue-500' : 'bg-slate-400'} h-[35px] flex justify-center items-center`}>
@@ -61,20 +63,34 @@ const SignUp = () => {
             </>)
           }
         </div>
+
         {
           formNo === 1 && <div>
+
+      <h1 className="p-5 text-center text-zinc-800 text-3xl font-semibold leading-10">Personal Information</h1>
             <div className='flex flex-col mb-2'>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name text-zinc-800 text-2xl font-medium">Full Name</label>
+             
               <input value={state.name} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="text" name='name' placeholder='name' id='name' />
             </div>
             <div className='flex flex-col mb-2'>
-              <label htmlFor="dept">Dept</label>
-              <input value={state.dept} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="text" name='dept' placeholder='dept name' id='dept' />
+              <label htmlFor="email text-zinc-800 text-2xl font-medium">Email Address</label>
+            
+             <input value={state.email} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="email" name='email' placeholder='email ' id='email' />
             </div>
             <div className='flex flex-col mb-2'>
-              <label htmlFor="batch">Batch</label>
-              <input value={state.batch} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="number" name='batch' placeholder='batch' />
-            </div>
+                            <label htmlFor="position">Position</label>
+                            <select
+                                value={state.position}
+                                onChange={inputHandle}
+                                className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md'
+                                name='position'
+                            >
+                                <option value=''>Select Position</option>
+                                <option value='teacher'>Teacher</option>
+                                <option value='student'>Student</option>
+                            </select>
+                        </div>
             <div className='mt-4 flex justify-center items-center'>
               <button onClick={next} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Next</button>
             </div>
@@ -93,7 +109,8 @@ const SignUp = () => {
             </div>
             <div className='flex flex-col mb-2'>
               <label className='text-slate-500' htmlFor="address">Address</label>
-              <textarea value={state.address} onChange={inputHandle} row='10' className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="number" name='address' placeholder='address' ></textarea>
+              
+              <textarea value={state.address} onChange={inputHandle}  className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="number" name='address' placeholder='address' ></textarea>
             </div>
             <div className='mt-4 gap-3 flex justify-center items-center'>
               <button onClick={pre} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Previous</button>
@@ -122,6 +139,20 @@ const SignUp = () => {
             </div>
           </div>
         }
+
+
+
+<p className="text-sm font-light text-black text-center p-5">
+     Already Have An Account?{" "}
+             <Link
+               to="/"
+            
+               className="font-medium link text-indigo-500 
+               hover:text-red-500 "
+             >
+               Log In
+             </Link>
+           </p>
 
       </div>
     </div>
