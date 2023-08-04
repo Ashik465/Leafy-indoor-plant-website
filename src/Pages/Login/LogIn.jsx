@@ -40,7 +40,7 @@ const LogIn = () => {
            <div className="w-screen h-screen flex-col text-center justify-center items-center gap-20 inline-flex">
             {/* from start */}
 
-            <div className="card rounded-none w-full max-w-4xl shadow-2xl bg-base-100">
+            <div className="card rounded-none w-full max-w-4xl ">
    
    <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
    {error &&  <p className='mb-3 text-red-600'> {error}  </p>}
