@@ -3,8 +3,21 @@ import { AiOutlineHome,  AiOutlineAlignLeft, AiOutlineBars } from "react-icons/a
 import {  BiLogOut } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import DashNav from "../Pages/Dashboard/dashnav/DashNav";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Dashboard = () => {
+    const {logout } = useContext(AuthContext)
+
+    //log out 
+const handleLogout =()=>{
+  logout()
+  .then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      console.log(error)
+    });
+}
     const activeClass = "text-white bg-blue-700 shadow-lg py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
     const inactiveClass = "py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
     return (
@@ -40,7 +53,7 @@ const Dashboard = () => {
                         
                         <li>
                             <NavLink
-                                to="/"
+                                to="/dashboard"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                 <AiOutlineHome />
                                 Dashboard
@@ -48,7 +61,7 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/listings"
+                                to="courses"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                 <AiOutlineBars></AiOutlineBars>
                                 Courses
@@ -56,15 +69,15 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/orders"
+                                to="account"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                 <VscAccount />
                                 Account
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink
-                                to="/stats"
+                            <NavLink onClick={handleLogout}
+                                to="/"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                 <BiLogOut />
                                 Logout
