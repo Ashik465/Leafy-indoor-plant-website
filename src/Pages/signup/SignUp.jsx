@@ -1,13 +1,26 @@
 
-import  React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import  React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/picture/signuplogo.png'
 import { GiConfirmed } from "react-icons/gi";
+import { AuthContext } from '../../provider/AuthProvider';
+import { getAuth, updateProfile } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
 
 const SignUp = () => {
+
+    // email and password login
+    const {createEmailUser,setUser}=useContext(AuthContext)
+    // eslint-disable-next-line no-unused-vars
+    const[error,setError] =useState('')
+    const navigate = useNavigate();
+    const location =useLocation()
+    const auth =getAuth(app)
+ const from = location?.state?.pathname || '/'
+
 
     const formArray = [1, 2, 3];
     const [formNo, setFormNo] = useState(formArray[0])
@@ -51,7 +64,53 @@ const SignUp = () => {
     const finalSubmit = () => {
         console.log(state)
       
-        toast.success('Account Created Successfully')
+        // toast.success('Account Created Successfully')
+        const {name,email,password,photoURL} = state
+
+        // start 
+  
+        createEmailUser(email,password,
+            )
+        .then((result) => {
+           
+            const loggedUser = result.user;
+            updateProfile(auth.currentUser, {
+             
+             
+              displayName:name , photoURL: photoURL
+            }).then(() => {
+              
+              setUser(loggedUser => {
+                const updatedLoggedUser = {...loggedUser}
+                updatedLoggedUser.displayName = name ;
+                updatedLoggedUser.photoURL = photoURL;
+    
+             return updatedLoggedUser 
+              })
+              // setLoader(true)
+              // window.location.reload()
+            }).catch((error) => {
+              // An error occurred
+                setError(error)
+                console.log(error)
+            });
+           
+            navigate(from, { replace: true });
+            console.log(loggedUser)
+            
+            
+          })
+          .catch((error) => {
+            console.log(error)
+             setError(error.message) 
+            
+          });
+    
+          toast.success('Account Created Successfully')
+    
+    
+      
+        // end
       
        
      
