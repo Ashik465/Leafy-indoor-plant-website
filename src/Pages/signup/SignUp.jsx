@@ -235,6 +235,7 @@ const SignUp = () => {
             <div className='flex flex-col mb-2'>
               <label className='text-slate-500' htmlFor="password">New password</label>
               <input value={state.password} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 text-slate-500 focus:border-blue-500 rounded-md' type="password" name='password' placeholder='Enter New Password' id='password' />
+              <label className='text-slate-500 text-sm' htmlFor="password">password should be at least 6 character</label>
             </div>
             <div className='flex flex-col mb-2'>
               <label className='text-slate-500' htmlFor="ConfirmPassword">Confirm Password</label>

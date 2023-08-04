@@ -1,37 +1,39 @@
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {  useState } from "react";
-import { Link,  } from "react-router-dom";
+import {  useContext, useState } from "react";
+import { Link, useNavigate,  } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../provider/AuthProvider";
 // import { AuthContext } from "../../provider/AuthProvider";
 
 const LogIn = () => {
     const [showPassword, setShowPassword] = useState(false);
-//   const {signInEmailUser} = useContext(AuthContext)
+  const {signInEmailUser} = useContext(AuthContext)
+  // eslint-disable-next-line no-unused-vars
   const [error ,setError] =useState('')
-//   const navigate = useNavigate()
+  const navigate = useNavigate()
   //react-hook-form
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {console.log(data);
   
-    setError(data)
+    
   // email and password login
   
-//   signInEmailUser(data.email, data.password)
-//   .then((result)=>{
-//     const loggedUser = result.user;
-//     console.log(loggedUser);
-//     // setLoader(false)
+  signInEmailUser(data.email, data.password)
+  .then((result)=>{
+    const loggedUser = result.user;
+    console.log(loggedUser);
+    // setLoader(false)
 
-//     navigate("/")
-//   })
-//   .catch((err)=>{
-//     console.log(err)
-//     setError(err.message)
-//     // setLoader(false)
+    navigate("/signup")
+  })
+  .catch((err)=>{
+    console.log(err)
+    setError(err.message)
+    // setLoader(false)
     
-//   })
+  })
 
   
   }
