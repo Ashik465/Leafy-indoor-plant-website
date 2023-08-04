@@ -26,7 +26,7 @@ const LogIn = () => {
     console.log(loggedUser);
     // setLoader(false)
 
-    navigate("/signup")
+    navigate("/dashboard")
   })
   .catch((err)=>{
     console.log(err)
