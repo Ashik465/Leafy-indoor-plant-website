@@ -1,8 +1,37 @@
+/* eslint-disable react/prop-types */
 import icon1 from '../../../assets/picture/Icon1.png'
 import icon2 from '../../../assets/picture/Icon2.png'
 import icon3 from '../../../assets/picture/Icon3.png'
 import icon4 from '../../../assets/picture/Icon4.png'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
+
+
+
 const Home = () => {
+    const data = [
+        { name: 'Jan', pv: 20 },
+        { name: 'Feb', pv: 25 },
+        { name: 'Mar', pv: 15 },
+        { name: 'Apr', pv: 30 },
+        { name: 'May', pv: 40 },
+        { name: 'June', pv: 20 },
+        { name: 'July', pv: 60 },
+        { name: 'Aug', pv: 20 },
+      ];
+
+      const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+            const data = payload[0].payload;
+            return (
+                <div className="custom-tooltip">
+                    <p>{`${data.name}: ${data.pv}%`}</p>
+                </div>
+            );
+        }
+        return null;
+    };
+   
     return (
         <>
             <div className="flex gap-5 p-10">
@@ -110,9 +139,23 @@ const Home = () => {
             </div>
 
             {/* rechart */}
-            <div>
-                
-            </div>
+
+
+            <div className="w-96 text-zinc-800 text-lg font-semibold">Your  Daily Progress</div>
+  <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+                </LineChart>
+            </ResponsiveContainer>
+        
+          
+     
+     
+          
         </>
     );
 };
