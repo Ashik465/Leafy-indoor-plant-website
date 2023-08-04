@@ -3,6 +3,7 @@ import  React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import logo from '../../assets/picture/signuplogo.png'
 
 const SignUp = () => {
 
@@ -18,9 +19,7 @@ const SignUp = () => {
       password: '',
       ConfirmPassword: '',
       
-      district: '',
-      thana: '',
-      post: ''
+      
     })
     const inputHandle = (e) => {
       setState({
@@ -49,11 +48,11 @@ const SignUp = () => {
     }
     const finalSubmit = () => {
         console.log(state)
-      if (state.district && state.thana && state.post) {
-        toast.success('form submit success')
-      } else {
-        toast.error('Please fillup all input field')
-      }
+      
+        toast.success('Account Created Successfully')
+      
+       
+     
     }
 
     const isActiveStep = (step) => formNo === step || formNo === step + 1;
@@ -186,18 +185,15 @@ const SignUp = () => {
 
         {
           formNo === 3 && <div>
-            <div className='flex flex-col mb-2'>
-              <label htmlFor="district">District</label>
-              <input value={state.district} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="text" name='district' placeholder='district name' id='district' />
+
+            <div className='flex flex-col mb-2 items-center justify-center'>
+
+                <img className='w-48 h-48 border-[#6078EA] border-opacity-50 rounded-full border-8' src={logo} alt="" />
+                <h1 className="text-zinc-800 text-3xl font-semibold leading-10 tracking-tight">Thank You!</h1>
+                <p className=" text-center text-neutral-400 text-2xl font-normal ">To create account please click submit button. Enjoy Job Task. </p>
+
             </div>
-            <div className='flex flex-col mb-2'>
-              <label htmlFor="thana">Thana</label>
-              <input value={state.thana} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="text" name='thana' placeholder='thana' id='thana' />
-            </div>
-            <div className='flex flex-col mb-2'>
-              <label htmlFor="post">Post</label>
-              <input value={state.post} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="text" name='post' placeholder='post' id='post' />
-            </div>
+           
             <div className='mt-4 gap-3 flex justify-center items-center'>
               <button onClick={pre} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Previous</button>
               <button onClick={finalSubmit} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Submit</button>
