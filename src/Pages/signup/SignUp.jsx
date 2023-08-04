@@ -12,6 +12,9 @@ const SignUp = () => {
       name: '',
       email: '',
       position: '',
+      institute: '',
+      educationLevel: '',
+      workTime: '',
       varsity: '',
       session: '',
       address: '',
@@ -26,7 +29,7 @@ const SignUp = () => {
       })
     }
     const next = () => {
-      if (formNo === 1 && state.name && state.email && state.position) {
+      if (formNo === 1 && state.name && state.email && state.position && state.institute) {
         setFormNo(formNo + 1)
       }
       else if (formNo === 2 && state.varsity && state.session && state.address) {
@@ -54,7 +57,8 @@ const SignUp = () => {
       <div className="card w-[570px]   bg-white p-5">
         <div className='flex justify-center items-center'>
           {
-            formArray.map((v, i) => <><div className={`w-[35px] my-3 text-white rounded-full ${formNo - 1 === i || formNo - 1 === i + 1 || formNo === formArray.length ? 'bg-blue-500' : 'bg-slate-400'} h-[35px] flex justify-center items-center`}>
+            formArray.map((v, i) => <>
+            <div key={i} className={`w-[35px] my-3 text-white rounded-full ${formNo - 1 === i || formNo - 1 === i + 1 || formNo === formArray.length ? 'bg-blue-500' : 'bg-slate-400'} h-[35px] flex justify-center items-center`}>
               {v}
             </div>
               {
@@ -67,7 +71,7 @@ const SignUp = () => {
         {
           formNo === 1 && <div>
 
-      <h1 className="p-5 text-center text-zinc-800 text-3xl font-semibold leading-10">Personal Information</h1>
+      <h1 className="p-2 text-center text-zinc-800 text-3xl font-semibold leading-10">Personal Information</h1>
             <div className='flex flex-col mb-2'>
               <label htmlFor="name text-zinc-800 text-2xl font-medium">Full Name</label>
              
@@ -78,6 +82,7 @@ const SignUp = () => {
             
              <input value={state.email} onChange={inputHandle} className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md' type="email" name='email' placeholder='email ' id='email' />
             </div>
+            {/* position input */}
             <div className='flex flex-col mb-2'>
                             <label htmlFor="position">Position</label>
                             <select
@@ -91,6 +96,56 @@ const SignUp = () => {
                                 <option value='student'>Student</option>
                             </select>
                         </div>
+                        {/* Institute Input */}
+
+                        <div className='flex flex-col mb-2'>
+                            <label htmlFor="institute">Institute Name</label>
+                            <select
+                                value={state.institute}
+                                onChange={inputHandle}
+                                className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md'
+                                name='institute'
+                            >
+                                <option value=''>Select Institute</option>
+                                <option value='Dhaka National Medical College'>Dhaka National Medical College</option>
+                                <option value='Ibrahim Medical College'>Ibrahim Medical College</option>
+                                <option value='Bangladesh Medical College'>Bangladesh Medical College</option>
+                                <option value='Holy Family Red Crescent Medical College'>Holy Family Red Crescent Medical College</option>
+                            </select>
+                        </div>
+                        {/* education level input field */}
+                        <div className='flex flex-col mb-2'>
+                            <label htmlFor="educationLevel">Education Level</label>
+                            <select
+                                value={state.educationLevel}
+                                onChange={inputHandle}
+                                className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md'
+                                name='educationLevel'
+                            >
+                                <option value=''>Select Education Level</option>
+                                <option value='SSC'>Secondary School Certificate (SSC)</option>
+                                <option value='HSC'>Higher Secondary School Certificate (HSC)</option>
+                                <option value='Diploma'>Diploma</option>
+                                <option value='BSC'>Bachelor of Science (BSC)</option>
+                                <option value='MA'>Master of Arts (MA)</option>
+                                <option value='BA'>Bachelor of Arts (BA)</option>
+                            </select>
+                        </div>
+                        {/* work time input field */}
+                        <div className='flex flex-col mb-2'>
+                            <label htmlFor="workTime">Work Time</label>
+                            <select
+                                value={state.workTime}
+                                onChange={inputHandle}
+                                className='p-2 border border-slate-400 mt-1 outline-0 focus:border-blue-500 rounded-md'
+                                name='workTime'
+                            >
+                                <option value=''>Select Work Time</option>
+                                <option value='Full Time'>Full Time</option>
+                                <option value='Part Time'>Part Time</option>
+                            </select>
+                        </div>
+
             <div className='mt-4 flex justify-center items-center'>
               <button onClick={next} className='px-3 py-2 text-lg rounded-md w-full text-white bg-blue-500'>Next</button>
             </div>
