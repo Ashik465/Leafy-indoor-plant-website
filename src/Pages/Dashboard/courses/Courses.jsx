@@ -8,6 +8,9 @@ import card6 from '../../../assets/picture/Image6.png'
 import card7 from '../../../assets/picture/Image7.png'
 import card8 from '../../../assets/picture/Image8.png'
 import combo from '../../../assets/picture/Combined Shape.png'
+import dropdown from '../../../assets/picture/dropdown.png'
+import layout from '../../../assets/picture/layout-grid.png'
+import { AiOutlineAlignCenter } from 'react-icons/ai'
 const Courses = () => {
     return (
         <>
@@ -20,7 +23,86 @@ const Courses = () => {
 
    {/* middle section  */}
 
+   <div className='flex flex-wrap justify-between items-center w-full p-10 '>
+  
 
+  <div className='flex my-5'>
+<div className='flex gap-5'>
+     <div className='px-7 py-4 bg-white rounded-lg  justify-center items-center gap-2.5 inline-flex shadow'>
+    <h1 className="text-center text-sky-950 text-sm font-medium leading-normal">Sort by:</h1>
+    
+    <div className="dropdown">
+  <label tabIndex={0} >  <div className='flex items-center justify-center gap-3'> <div className="w-20 text-center text-zinc-500 text-sm font-normal leading-normal">Popular</div> <img src={dropdown} alt="" />    </div></label>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+    
+    </div>
+    {/* 2nd */}
+    <div className='px-7 py-4 bg-white rounded-lg  justify-center items-center gap-2.5 inline-flex shadow'>
+   
+    
+    <div className="dropdown">
+  <label tabIndex={0} >  <div className='flex items-center justify-center gap-3'> <div className="w-20 text-center text-zinc-500 text-sm font-normal leading-normal">Course</div> <img src={dropdown} alt="" />    </div></label>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+    
+    </div>
+    {/* 3rd */}
+    <div className='px-7 py-4 bg-white rounded-lg  justify-center items-center gap-2.5 inline-flex shadow'>
+    <h1 className="text-center text-sky-950 text-sm font-medium leading-normal">Category:</h1>
+    
+    <div className="dropdown">
+  <label tabIndex={0} >  <div className='flex items-center justify-center gap-3'> <div className="w-20 text-center text-zinc-500 text-sm font-normal leading-normal">All Category</div> <img src={dropdown} alt="" />    </div></label>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+    
+    </div>
+</div>
+   
+   
+
+  </div>
+
+
+  <div className=' flex items-center justify-center gap-3'>
+  <div className='px-7 py-4 bg-white rounded-lg  justify-center items-center gap-2.5 inline-flex shadow'>
+   
+    
+   <div className="dropdown">
+ <label tabIndex={0} >  <div className='flex items-center justify-center gap-3'> <AiOutlineAlignCenter></AiOutlineAlignCenter> <div className="w-20 text-center text-zinc-500 text-sm font-normal leading-normal">Course</div>    </div></label>
+ <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+   <li><a>Item 1</a></li>
+   <li><a>Item 2</a></li>
+ </ul>
+</div>
+   
+   </div>
+  <div className='px-2 py-1 bg-white rounded-lg  justify-center items-center gap-2.5 inline-flex shadow'>
+   
+    
+   <div className="dropdown">
+ <label tabIndex={0} >  <div className='flex items-center justify-center gap-3'> <img src={layout} alt="" />   </div></label>
+ <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+   <li><a>Item 1</a></li>
+   <li><a>Item 2</a></li>
+ </ul>
+</div>
+   
+   </div>
+  </div>
+
+
+
+   </div>
    
    
 
