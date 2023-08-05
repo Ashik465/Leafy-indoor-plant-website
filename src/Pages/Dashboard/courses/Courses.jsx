@@ -11,6 +11,19 @@ import combo from '../../../assets/picture/Combined Shape.png'
 const Courses = () => {
     return (
         <>
+
+{/* top section */}
+   <div className='bg-white shadow-lg flex flex-col gap-2 justify-start w-full px-10 py-5'>
+   <h1 className="text-sky-950 text-xl font-semibold leading-snug">Discover</h1>
+   <div><span className="text-zinc-800 text-base font-normal leading-snug">Dashboard  </span><span className="text-indigo-500 text-base font-medium leading-snug">Courses</span></div>
+   </div>
+
+   {/* middle section  */}
+
+
+   
+   
+
            {/* card section  */}
 
            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 p-10">
