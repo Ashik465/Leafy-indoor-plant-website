@@ -24,7 +24,7 @@ const handleLogout =()=>{
            <div className="navbar p-4 ">
             <div className="navbar-start">
                 <label htmlFor="my-drawer-2" className="btn btn-ghost btn-square drawer-button lg:hidden"><AiOutlineBars className="text-xl" /></label>
-                <input type="text" placeholder="Search Dashboard" className="input input-bordered border-none py-1 bg-base-200  w-full" />
+                <input type="text" placeholder="Search here..." className="input input-bordered border-none py-1 bg-base-200  w-full" />
             </div>
             <div className="navbar-end gap-3">
                
